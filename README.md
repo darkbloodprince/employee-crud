@@ -28,9 +28,6 @@ src/
 └── test/java/com/example/employeecrud
 └── controller/EmployeeControllerTest.java
 
-yaml
-Copy
-Edit
 
 ---
 
@@ -65,16 +62,10 @@ Configure Oracle DB credentials in application.properties.
 
 Build and run:
 
-bash
-Copy
-Edit
 mvn spring-boot:run
 🧪 Testing
 Run tests using:
 
-bash
-Copy
-Edit
 mvn test
 You can also import the provided Postman collection for API testing.
 
