@@ -17,11 +17,13 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
+    // Get all employees
     @GetMapping
     public List<Employee> getAllEmployees() {
         return employeeService.getAllEmployees();
     }
 
+    // Get employee by id
     @GetMapping("/{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
         return employeeService.getEmployeeById(id)
@@ -29,20 +31,24 @@ public class EmployeeController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    // Create a new employee
     @PostMapping
     public Employee createEmployee(@RequestBody Employee employee) {
         return employeeService.saveEmployee(employee);
     }
 
+    // Update employee by id
     @PutMapping("/{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
         try {
-            return ResponseEntity.ok(employeeService.updateEmployee(id, employee));
+            Employee updatedEmployee = employeeService.updateEmployee(id, employee);
+            return ResponseEntity.ok(updatedEmployee);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }
     }
 
+    // Delete employee by id
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEmployee(@PathVariable Long id) {
         employeeService.deleteEmployee(id);
